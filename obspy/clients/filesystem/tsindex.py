@@ -1376,7 +1376,7 @@ class TSIndexDatabaseHandler(object):
             else:
                 raise ValueError("database must be a string.")
             db_path = "sqlite:///{}".format(self.database)
-            self.engine = sa.create_engine(db_path, poolclass=QueuePool, pool_size=0)
+            self.engine = sa.create_engine(db_path, poolclass=QueuePool, pool_size=200)
             self.session = sessionmaker(bind=self.engine)
         else:
             raise ValueError("Either a database path or an existing "
